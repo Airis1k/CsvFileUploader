@@ -1,0 +1,29 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <h3>List Users</h3>
+    <hr/>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.name}" />
+            <td th:text="${user.email}" />
+            <td th:text="${user.number}" />
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
