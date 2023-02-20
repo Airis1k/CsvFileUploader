@@ -1,12 +1,16 @@
-package com.example.CsvFileUploader;
+package com.example.CsvFileUploader.Controller;
 
+import com.example.CsvFileUploader.Entity.User;
+import com.example.CsvFileUploader.Repository.UserRepository;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -17,6 +21,9 @@ import java.util.List;
 
 @Controller
 public class UploadController {
+
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping("/")
     public String index() {
@@ -46,6 +53,7 @@ public class UploadController {
                 System.out.println(users);
 
                 // TODO: save users in DB
+                userRepository.saveAll(users);
 
                 // save users list on model
                 model.addAttribute("users", users);
