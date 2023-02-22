@@ -30,8 +30,8 @@ public class UserController {
         return "index";
     }
 
-    @PostMapping("/upload-csv-file")
-    public String uploadCSVFile(@RequestParam("file")MultipartFile file, Model model) throws IOException {
+    @PostMapping("/list")
+    public ModelAndView uploadCSVFile(@RequestParam("file")MultipartFile file, Model model) throws IOException {
 
         // validate file
         if (file.isEmpty()) {
@@ -64,7 +64,7 @@ public class UserController {
             }
         }
 
-        return "file-upload-status";
+        return getAllUsers();
     }
 
     @GetMapping("/list")
